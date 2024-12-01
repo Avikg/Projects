@@ -1,0 +1,1 @@
+Speedup for parallel processes: -226.23991629431174
