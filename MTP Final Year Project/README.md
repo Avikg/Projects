@@ -134,7 +134,7 @@ I would like to express my gratitude to:
 
 ## For Codes
 
-Also codes are password protected as there is secrecy of paper publication. For more details contact the undersigned.
+Codes are password protected as there is secrecy of paper publication. For more details contact the undersigned.
 
 **Avik Pramanick**  
 **Roll No:** 23CS60R78  
