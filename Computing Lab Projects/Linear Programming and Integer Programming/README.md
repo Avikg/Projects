@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains solutions for **Assignment 5: Linear Programming** from the **CS69011 Computing Lab** course. The assignment involves solving linear programming problems using Python and LP solvers.
+This repository contains solutions for **Assignment: Linear Programming** from the **CS69011 Computing Lab** course. The assignment involves solving linear programming problems using Python and LP solvers.
 
 ### Assignment Breakdown:
 - **Part A**: Focused on production planning optimization.
