@@ -1,0 +1,295 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    SECOND
+    SKIPTAG
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> content_section
+Rule 2     content_section -> FIRST content_items
+Rule 3     content_items -> content_item content_items
+Rule 4     content_items -> content_item
+Rule 5     content_item -> contents
+Rule 6     content_item -> FIRST
+Rule 7     content_item -> link
+Rule 8     content_item -> heading
+Rule 9     heading -> H3 CONTENT
+Rule 10    contents -> CONTENT
+Rule 11    link -> OPENHREF CONTENT CLOSEHREF
+Rule 12    link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF
+Rule 13    link -> OPENHREF CONTENT CONTENT CLOSEHREF
+Rule 14    link -> OPENHREF CLOSEHREF
+
+Terminals, with rules where they appear
+
+CLOSEHREF            : 11 12 13 14
+CONTENT              : 9 10 11 12 12 12 13 13
+FIRST                : 2 6
+H3                   : 9
+OPENHREF             : 11 12 13 14
+SECOND               : 
+SKIPTAG              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+content_item         : 3 4
+content_items        : 2 3
+content_section      : 1
+contents             : 5
+heading              : 8
+link                 : 7
+start                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . content_section
+    (2) content_section -> . FIRST content_items
+
+    FIRST           shift and go to state 3
+
+    start                          shift and go to state 1
+    content_section                shift and go to state 2
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> content_section .
+
+    $end            reduce using rule 1 (start -> content_section .)
+
+
+state 3
+
+    (2) content_section -> FIRST . content_items
+    (3) content_items -> . content_item content_items
+    (4) content_items -> . content_item
+    (5) content_item -> . contents
+    (6) content_item -> . FIRST
+    (7) content_item -> . link
+    (8) content_item -> . heading
+    (10) contents -> . CONTENT
+    (11) link -> . OPENHREF CONTENT CLOSEHREF
+    (12) link -> . OPENHREF CONTENT CONTENT CONTENT CLOSEHREF
+    (13) link -> . OPENHREF CONTENT CONTENT CLOSEHREF
+    (14) link -> . OPENHREF CLOSEHREF
+    (9) heading -> . H3 CONTENT
+
+    FIRST           shift and go to state 4
+    CONTENT         shift and go to state 10
+    OPENHREF        shift and go to state 11
+    H3              shift and go to state 12
+
+    content_items                  shift and go to state 5
+    content_item                   shift and go to state 6
+    contents                       shift and go to state 7
+    link                           shift and go to state 8
+    heading                        shift and go to state 9
+
+state 4
+
+    (6) content_item -> FIRST .
+
+    FIRST           reduce using rule 6 (content_item -> FIRST .)
+    CONTENT         reduce using rule 6 (content_item -> FIRST .)
+    OPENHREF        reduce using rule 6 (content_item -> FIRST .)
+    H3              reduce using rule 6 (content_item -> FIRST .)
+    $end            reduce using rule 6 (content_item -> FIRST .)
+
+
+state 5
+
+    (2) content_section -> FIRST content_items .
+
+    $end            reduce using rule 2 (content_section -> FIRST content_items .)
+
+
+state 6
+
+    (3) content_items -> content_item . content_items
+    (4) content_items -> content_item .
+    (3) content_items -> . content_item content_items
+    (4) content_items -> . content_item
+    (5) content_item -> . contents
+    (6) content_item -> . FIRST
+    (7) content_item -> . link
+    (8) content_item -> . heading
+    (10) contents -> . CONTENT
+    (11) link -> . OPENHREF CONTENT CLOSEHREF
+    (12) link -> . OPENHREF CONTENT CONTENT CONTENT CLOSEHREF
+    (13) link -> . OPENHREF CONTENT CONTENT CLOSEHREF
+    (14) link -> . OPENHREF CLOSEHREF
+    (9) heading -> . H3 CONTENT
+
+    $end            reduce using rule 4 (content_items -> content_item .)
+    FIRST           shift and go to state 4
+    CONTENT         shift and go to state 10
+    OPENHREF        shift and go to state 11
+    H3              shift and go to state 12
+
+    content_item                   shift and go to state 6
+    content_items                  shift and go to state 13
+    contents                       shift and go to state 7
+    link                           shift and go to state 8
+    heading                        shift and go to state 9
+
+state 7
+
+    (5) content_item -> contents .
+
+    FIRST           reduce using rule 5 (content_item -> contents .)
+    CONTENT         reduce using rule 5 (content_item -> contents .)
+    OPENHREF        reduce using rule 5 (content_item -> contents .)
+    H3              reduce using rule 5 (content_item -> contents .)
+    $end            reduce using rule 5 (content_item -> contents .)
+
+
+state 8
+
+    (7) content_item -> link .
+
+    FIRST           reduce using rule 7 (content_item -> link .)
+    CONTENT         reduce using rule 7 (content_item -> link .)
+    OPENHREF        reduce using rule 7 (content_item -> link .)
+    H3              reduce using rule 7 (content_item -> link .)
+    $end            reduce using rule 7 (content_item -> link .)
+
+
+state 9
+
+    (8) content_item -> heading .
+
+    FIRST           reduce using rule 8 (content_item -> heading .)
+    CONTENT         reduce using rule 8 (content_item -> heading .)
+    OPENHREF        reduce using rule 8 (content_item -> heading .)
+    H3              reduce using rule 8 (content_item -> heading .)
+    $end            reduce using rule 8 (content_item -> heading .)
+
+
+state 10
+
+    (10) contents -> CONTENT .
+
+    FIRST           reduce using rule 10 (contents -> CONTENT .)
+    CONTENT         reduce using rule 10 (contents -> CONTENT .)
+    OPENHREF        reduce using rule 10 (contents -> CONTENT .)
+    H3              reduce using rule 10 (contents -> CONTENT .)
+    $end            reduce using rule 10 (contents -> CONTENT .)
+
+
+state 11
+
+    (11) link -> OPENHREF . CONTENT CLOSEHREF
+    (12) link -> OPENHREF . CONTENT CONTENT CONTENT CLOSEHREF
+    (13) link -> OPENHREF . CONTENT CONTENT CLOSEHREF
+    (14) link -> OPENHREF . CLOSEHREF
+
+    CONTENT         shift and go to state 14
+    CLOSEHREF       shift and go to state 15
+
+
+state 12
+
+    (9) heading -> H3 . CONTENT
+
+    CONTENT         shift and go to state 16
+
+
+state 13
+
+    (3) content_items -> content_item content_items .
+
+    $end            reduce using rule 3 (content_items -> content_item content_items .)
+
+
+state 14
+
+    (11) link -> OPENHREF CONTENT . CLOSEHREF
+    (12) link -> OPENHREF CONTENT . CONTENT CONTENT CLOSEHREF
+    (13) link -> OPENHREF CONTENT . CONTENT CLOSEHREF
+
+    CLOSEHREF       shift and go to state 18
+    CONTENT         shift and go to state 17
+
+
+state 15
+
+    (14) link -> OPENHREF CLOSEHREF .
+
+    FIRST           reduce using rule 14 (link -> OPENHREF CLOSEHREF .)
+    CONTENT         reduce using rule 14 (link -> OPENHREF CLOSEHREF .)
+    OPENHREF        reduce using rule 14 (link -> OPENHREF CLOSEHREF .)
+    H3              reduce using rule 14 (link -> OPENHREF CLOSEHREF .)
+    $end            reduce using rule 14 (link -> OPENHREF CLOSEHREF .)
+
+
+state 16
+
+    (9) heading -> H3 CONTENT .
+
+    FIRST           reduce using rule 9 (heading -> H3 CONTENT .)
+    CONTENT         reduce using rule 9 (heading -> H3 CONTENT .)
+    OPENHREF        reduce using rule 9 (heading -> H3 CONTENT .)
+    H3              reduce using rule 9 (heading -> H3 CONTENT .)
+    $end            reduce using rule 9 (heading -> H3 CONTENT .)
+
+
+state 17
+
+    (12) link -> OPENHREF CONTENT CONTENT . CONTENT CLOSEHREF
+    (13) link -> OPENHREF CONTENT CONTENT . CLOSEHREF
+
+    CONTENT         shift and go to state 19
+    CLOSEHREF       shift and go to state 20
+
+
+state 18
+
+    (11) link -> OPENHREF CONTENT CLOSEHREF .
+
+    FIRST           reduce using rule 11 (link -> OPENHREF CONTENT CLOSEHREF .)
+    CONTENT         reduce using rule 11 (link -> OPENHREF CONTENT CLOSEHREF .)
+    OPENHREF        reduce using rule 11 (link -> OPENHREF CONTENT CLOSEHREF .)
+    H3              reduce using rule 11 (link -> OPENHREF CONTENT CLOSEHREF .)
+    $end            reduce using rule 11 (link -> OPENHREF CONTENT CLOSEHREF .)
+
+
+state 19
+
+    (12) link -> OPENHREF CONTENT CONTENT CONTENT . CLOSEHREF
+
+    CLOSEHREF       shift and go to state 21
+
+
+state 20
+
+    (13) link -> OPENHREF CONTENT CONTENT CLOSEHREF .
+
+    FIRST           reduce using rule 13 (link -> OPENHREF CONTENT CONTENT CLOSEHREF .)
+    CONTENT         reduce using rule 13 (link -> OPENHREF CONTENT CONTENT CLOSEHREF .)
+    OPENHREF        reduce using rule 13 (link -> OPENHREF CONTENT CONTENT CLOSEHREF .)
+    H3              reduce using rule 13 (link -> OPENHREF CONTENT CONTENT CLOSEHREF .)
+    $end            reduce using rule 13 (link -> OPENHREF CONTENT CONTENT CLOSEHREF .)
+
+
+state 21
+
+    (12) link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .
+
+    FIRST           reduce using rule 12 (link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .)
+    CONTENT         reduce using rule 12 (link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .)
+    OPENHREF        reduce using rule 12 (link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .)
+    H3              reduce using rule 12 (link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .)
+    $end            reduce using rule 12 (link -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .)
+
