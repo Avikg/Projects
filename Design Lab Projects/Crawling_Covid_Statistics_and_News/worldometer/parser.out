@@ -1,0 +1,263 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BORN
+    CLOSETD
+    GARBAGE
+    SPACE
+    TBD
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> YESTERDAY skipGARBAGE STARTER skipTD rows
+Rule 2     skipTD -> CTR skipTD
+Rule 3     skipTD -> <empty>
+Rule 4     rows -> GETrows rows
+Rule 5     rows -> CTBD
+Rule 6     GETrows -> TR HREF HREF CTR
+Rule 7     GETrows -> TR HREF CTR
+Rule 8     GETrows -> TR CTR
+Rule 9     getCONTENTS -> OPENTD getCONTENTS
+Rule 10    getCONTENTS -> OPENTD CONTENT getCONTENTS
+Rule 11    getCONTENTS -> <empty>
+Rule 12    skipGARBAGE -> TR skipGARBAGE
+Rule 13    skipGARBAGE -> CTR skipGARBAGE
+Rule 14    skipGARBAGE -> <empty>
+
+Terminals, with rules where they appear
+
+BORN                 : 
+CLOSETD              : 
+CONTENT              : 10
+CTBD                 : 5
+CTR                  : 2 6 7 8 13
+GARBAGE              : 
+HREF                 : 6 6 7
+OPENTD               : 9 10
+SPACE                : 
+STARTER              : 1
+TBD                  : 
+TR                   : 6 7 8 12
+YESTERDAY            : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+GETrows              : 4
+getCONTENTS          : 9 10
+rows                 : 1 4
+skipGARBAGE          : 1 12 13
+skipTD               : 1 2
+start                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . YESTERDAY skipGARBAGE STARTER skipTD rows
+
+    YESTERDAY       shift and go to state 2
+
+    start                          shift and go to state 1
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> YESTERDAY . skipGARBAGE STARTER skipTD rows
+    (12) skipGARBAGE -> . TR skipGARBAGE
+    (13) skipGARBAGE -> . CTR skipGARBAGE
+    (14) skipGARBAGE -> .
+
+    TR              shift and go to state 4
+    CTR             shift and go to state 5
+    STARTER         reduce using rule 14 (skipGARBAGE -> .)
+
+    skipGARBAGE                    shift and go to state 3
+
+state 3
+
+    (1) start -> YESTERDAY skipGARBAGE . STARTER skipTD rows
+
+    STARTER         shift and go to state 6
+
+
+state 4
+
+    (12) skipGARBAGE -> TR . skipGARBAGE
+    (12) skipGARBAGE -> . TR skipGARBAGE
+    (13) skipGARBAGE -> . CTR skipGARBAGE
+    (14) skipGARBAGE -> .
+
+    TR              shift and go to state 4
+    CTR             shift and go to state 5
+    STARTER         reduce using rule 14 (skipGARBAGE -> .)
+
+    skipGARBAGE                    shift and go to state 7
+
+state 5
+
+    (13) skipGARBAGE -> CTR . skipGARBAGE
+    (12) skipGARBAGE -> . TR skipGARBAGE
+    (13) skipGARBAGE -> . CTR skipGARBAGE
+    (14) skipGARBAGE -> .
+
+    TR              shift and go to state 4
+    CTR             shift and go to state 5
+    STARTER         reduce using rule 14 (skipGARBAGE -> .)
+
+    skipGARBAGE                    shift and go to state 8
+
+state 6
+
+    (1) start -> YESTERDAY skipGARBAGE STARTER . skipTD rows
+    (2) skipTD -> . CTR skipTD
+    (3) skipTD -> .
+
+    CTR             shift and go to state 10
+    CTBD            reduce using rule 3 (skipTD -> .)
+    TR              reduce using rule 3 (skipTD -> .)
+
+    skipTD                         shift and go to state 9
+
+state 7
+
+    (12) skipGARBAGE -> TR skipGARBAGE .
+
+    STARTER         reduce using rule 12 (skipGARBAGE -> TR skipGARBAGE .)
+
+
+state 8
+
+    (13) skipGARBAGE -> CTR skipGARBAGE .
+
+    STARTER         reduce using rule 13 (skipGARBAGE -> CTR skipGARBAGE .)
+
+
+state 9
+
+    (1) start -> YESTERDAY skipGARBAGE STARTER skipTD . rows
+    (4) rows -> . GETrows rows
+    (5) rows -> . CTBD
+    (6) GETrows -> . TR HREF HREF CTR
+    (7) GETrows -> . TR HREF CTR
+    (8) GETrows -> . TR CTR
+
+    CTBD            shift and go to state 13
+    TR              shift and go to state 14
+
+    rows                           shift and go to state 11
+    GETrows                        shift and go to state 12
+
+state 10
+
+    (2) skipTD -> CTR . skipTD
+    (2) skipTD -> . CTR skipTD
+    (3) skipTD -> .
+
+    CTR             shift and go to state 10
+    CTBD            reduce using rule 3 (skipTD -> .)
+    TR              reduce using rule 3 (skipTD -> .)
+
+    skipTD                         shift and go to state 15
+
+state 11
+
+    (1) start -> YESTERDAY skipGARBAGE STARTER skipTD rows .
+
+    $end            reduce using rule 1 (start -> YESTERDAY skipGARBAGE STARTER skipTD rows .)
+
+
+state 12
+
+    (4) rows -> GETrows . rows
+    (4) rows -> . GETrows rows
+    (5) rows -> . CTBD
+    (6) GETrows -> . TR HREF HREF CTR
+    (7) GETrows -> . TR HREF CTR
+    (8) GETrows -> . TR CTR
+
+    CTBD            shift and go to state 13
+    TR              shift and go to state 14
+
+    GETrows                        shift and go to state 12
+    rows                           shift and go to state 16
+
+state 13
+
+    (5) rows -> CTBD .
+
+    $end            reduce using rule 5 (rows -> CTBD .)
+
+
+state 14
+
+    (6) GETrows -> TR . HREF HREF CTR
+    (7) GETrows -> TR . HREF CTR
+    (8) GETrows -> TR . CTR
+
+    HREF            shift and go to state 17
+    CTR             shift and go to state 18
+
+
+state 15
+
+    (2) skipTD -> CTR skipTD .
+
+    CTBD            reduce using rule 2 (skipTD -> CTR skipTD .)
+    TR              reduce using rule 2 (skipTD -> CTR skipTD .)
+
+
+state 16
+
+    (4) rows -> GETrows rows .
+
+    $end            reduce using rule 4 (rows -> GETrows rows .)
+
+
+state 17
+
+    (6) GETrows -> TR HREF . HREF CTR
+    (7) GETrows -> TR HREF . CTR
+
+    HREF            shift and go to state 19
+    CTR             shift and go to state 20
+
+
+state 18
+
+    (8) GETrows -> TR CTR .
+
+    CTBD            reduce using rule 8 (GETrows -> TR CTR .)
+    TR              reduce using rule 8 (GETrows -> TR CTR .)
+
+
+state 19
+
+    (6) GETrows -> TR HREF HREF . CTR
+
+    CTR             shift and go to state 21
+
+
+state 20
+
+    (7) GETrows -> TR HREF CTR .
+
+    CTBD            reduce using rule 7 (GETrows -> TR HREF CTR .)
+    TR              reduce using rule 7 (GETrows -> TR HREF CTR .)
+
+
+state 21
+
+    (6) GETrows -> TR HREF HREF CTR .
+
+    CTBD            reduce using rule 6 (GETrows -> TR HREF HREF CTR .)
+    TR              reduce using rule 6 (GETrows -> TR HREF HREF CTR .)
+
